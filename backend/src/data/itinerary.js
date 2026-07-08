@@ -184,7 +184,6 @@ const days = [
         durationMin: 20,
         image: img('zipline,adventure', 23),
         highlight: true,
-        mustSee: true,
       },
       {
         time: '13:00',

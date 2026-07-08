@@ -2,8 +2,8 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 9px;
-  padding: 7px;
+  gap: 11px;
+  padding: 10px;
   border: 1px solid var(--outline-variant);
   border-radius: var(--radius-lg);
   background: var(--surface-container-lowest);
@@ -16,8 +16,8 @@
 
 .evt__thumb {
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
+  width: 58px;
+  height: 58px;
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--outline-variant);
@@ -43,7 +43,7 @@
 .evt__time {
   flex-shrink: 0;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--primary);
 }
@@ -51,27 +51,13 @@
   flex: 0 1 auto;
   min-width: 0;
   font-family: var(--font-headline);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--on-surface);
   line-height: 1.25;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-.evt-stay {
-  flex-shrink: 0;
-  margin-left: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 1px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--secondary);
-}
-.evt-stay .material-symbols-outlined {
-  font-size: 13px;
 }
 
 .evt__line2 {
@@ -133,16 +119,3 @@
   color: var(--primary);
 }
 
-.evt-mustsee {
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  z-index: 2;
-  background: var(--primary);
-  color: var(--on-primary);
-  font-family: var(--font-mono);
-  font-size: 9px;
-  font-weight: 700;
-  padding: 2px 6px;
-  border-radius: var(--radius-full);
-}
