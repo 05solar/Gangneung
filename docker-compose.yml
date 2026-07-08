@@ -1,0 +1,32 @@
+# 강릉 여행 일정 앱 - 프론트/백엔드 통합 실행
+# 사용법:  docker compose up --build   →  http://localhost:8080
+
+services:
+  # 백엔드 API (Express)
+  backend:
+    build: ./backend
+    container_name: gangneung-backend
+    environment:
+      - PORT=4000
+      - DATA_DIR=/app/data # 점수 저장 위치(볼륨)
+    volumes:
+      - gangneung-scores:/app/data # 점수(scores.json) 영구 보존 → 재빌드해도 유지
+    expose:
+      - "4000" # 내부 네트워크에서만 노출 (프론트가 프록시)
+    ports:
+      - "4000:4000" # 필요 시 API 직접 접근용 (선택)
+    restart: unless-stopped
+
+  # 프론트엔드 (React 빌드 → Nginx 서빙 + /api 프록시)
+  frontend:
+    build: ./frontend
+    container_name: gangneung-frontend
+    depends_on:
+      - backend
+    ports:
+      - "8080:80" # 브라우저 접속: http://localhost:8080
+    restart: unless-stopped
+
+# 명명된 볼륨: 점수 데이터가 컨테이너 재빌드/재생성에도 살아남도록 함
+volumes:
+  gangneung-scores:

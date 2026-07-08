@@ -1,0 +1,178 @@
+.g2048 {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.g2048__scores {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  margin-bottom: 12px;
+  padding-left: 2px;
+}
+.g2048__score {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+.g2048__score-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--on-surface-variant);
+}
+.g2048__score-value {
+  font-family: var(--font-headline);
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--primary);
+}
+.g2048__new {
+  margin-left: auto;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  border: none;
+  background: var(--primary);
+  color: var(--on-primary);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.g2048__board-wrap {
+  display: flex;
+  justify-content: center;
+}
+/* 328 = 패딩8 + 칸72*4 + 간격8*3 */
+.g2048__board {
+  position: relative;
+  width: 328px;
+  height: 328px;
+  padding: 8px;
+  background: #bbada0;
+  border-radius: var(--radius-lg);
+  touch-action: none;
+  user-select: none;
+  display: grid;
+  grid-template-columns: repeat(4, 72px);
+  grid-template-rows: repeat(4, 72px);
+  gap: 8px;
+}
+/* 배경 빈 칸 */
+.g2048__cell {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius);
+  background: rgba(238, 228, 218, 0.35);
+}
+
+/* 타일: 절대 위치 + transform 슬라이딩 */
+.g2048__tile {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  font-family: var(--font-headline);
+  font-weight: 800;
+  font-size: 30px;
+  color: #776e65;
+  background: #eee4da;
+  transform: translate(var(--x), var(--y));
+  transition: transform 0.13s ease;
+  will-change: transform;
+}
+.g2048__tile.v128,
+.g2048__tile.v256,
+.g2048__tile.v512 { font-size: 26px; }
+.g2048__tile.v1024,
+.g2048__tile.v2048 { font-size: 21px; }
+
+.g2048__tile.v2 { background: #eee4da; }
+.g2048__tile.v4 { background: #ede0c8; }
+.g2048__tile.v8 { background: #f2b179; color: #fff; }
+.g2048__tile.v16 { background: #f59563; color: #fff; }
+.g2048__tile.v32 { background: #f67c5f; color: #fff; }
+.g2048__tile.v64 { background: #f65e3b; color: #fff; }
+.g2048__tile.v128 { background: #edcf72; color: #fff; }
+.g2048__tile.v256 { background: #edcc61; color: #fff; }
+.g2048__tile.v512 { background: #edc850; color: #fff; }
+.g2048__tile.v1024 { background: #edc53f; color: #fff; }
+.g2048__tile.v2048 { background: #edc22e; color: #fff; }
+
+/* 합체: 슬라이드 후 팝 */
+.g2048__tile.merged {
+  animation: pop2048 0.18s ease;
+  z-index: 3;
+}
+@keyframes pop2048 {
+  0% { transform: translate(var(--x), var(--y)) scale(1); }
+  50% { transform: translate(var(--x), var(--y)) scale(1.2); }
+  100% { transform: translate(var(--x), var(--y)) scale(1); }
+}
+/* 새 타일 등장 */
+.g2048__tile.new {
+  animation: appear2048 0.16s ease;
+  z-index: 2;
+}
+@keyframes appear2048 {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.g2048__over {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(11, 28, 48, 0.55);
+  border-radius: var(--radius-lg);
+  z-index: 5;
+}
+.g2048__over-card {
+  width: 78%;
+  max-width: 240px;
+  background: var(--surface-container-lowest);
+  border-radius: var(--radius-xl);
+  padding: 22px 18px;
+  text-align: center;
+}
+.g2048__over-card h3 {
+  font-family: var(--font-headline);
+  font-size: 20px;
+  font-weight: 800;
+}
+.g2048__over-score {
+  font-family: var(--font-headline);
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--primary);
+  margin: 4px 0 14px;
+}
+.g2048__over-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.g2048__btn {
+  padding: 11px;
+  border-radius: var(--radius);
+  border: 1px solid var(--outline-variant);
+  background: var(--surface-container-low);
+  color: var(--on-surface);
+  font-weight: 600;
+  font-size: 14px;
+}
+.g2048__btn--primary {
+  background: var(--primary);
+  color: var(--on-primary);
+  border-color: var(--outline);
+}
+.g2048__hint {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--on-surface-variant);
+}

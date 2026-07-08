@@ -1,0 +1,198 @@
+.dsched {
+  margin-top: 4px;
+}
+
+/* 상단 바: 일정 개수 / 수정 버튼 (또는 취소·저장) */
+.dsched__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.dsched__count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--on-surface-variant);
+}
+.dsched__count--edit {
+  color: var(--primary);
+}
+.dsched__actions {
+  display: flex;
+  gap: 8px;
+}
+.dsched__edit {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 7px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--outline-variant);
+  background: var(--surface-container-low);
+  color: var(--on-surface);
+  font-weight: 700;
+  font-size: 13px;
+}
+.dsched__edit .material-symbols-outlined {
+  font-size: 17px;
+  color: var(--primary);
+}
+.dsched__btn {
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--outline-variant);
+  background: var(--surface-container-low);
+  color: var(--on-surface);
+  font-weight: 700;
+  font-size: 13px;
+}
+.dsched__btn--primary {
+  background: var(--primary);
+  color: var(--on-primary);
+  border-color: var(--outline);
+}
+.dsched__btn:disabled {
+  opacity: 0.5;
+}
+.dsched__err {
+  margin: 0 0 10px;
+  padding: 8px 10px;
+  border-radius: var(--radius-lg);
+  background: var(--surface-container-high);
+  color: var(--secondary);
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* 편집 카드 목록 */
+.edit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.edit-card {
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  background: var(--surface-container-lowest);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.edit-card__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.edit-card__no {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--on-primary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.edit-card__move {
+  display: flex;
+  gap: 4px;
+}
+.edit-card__move button,
+.edit-card__del {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid var(--outline-variant);
+  background: var(--surface-container);
+  color: var(--on-surface-variant);
+}
+.edit-card__move button:disabled {
+  opacity: 0.35;
+}
+.edit-card__del {
+  margin-left: auto;
+  color: var(--secondary);
+}
+.edit-card__move .material-symbols-outlined,
+.edit-card__del .material-symbols-outlined {
+  font-size: 19px;
+}
+
+/* 입력 필드 */
+.ef {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+.ef > span {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--on-surface-variant);
+}
+.ef input,
+.ef select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 9px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--outline-variant);
+  background: var(--surface-container-low);
+  color: var(--on-surface);
+  font-size: 14px;
+  font-family: inherit;
+}
+.ef input:focus,
+.ef select:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: -1px;
+}
+.ef-row {
+  display: flex;
+  gap: 8px;
+}
+.ef--check {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+.ef--check input {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+.ef--check span {
+  font-size: 13px;
+  color: var(--on-surface);
+}
+
+/* 일정 추가 버튼 */
+.dsched__add {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--outline);
+  background: transparent;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.dsched__add .material-symbols-outlined {
+  font-size: 19px;
+}

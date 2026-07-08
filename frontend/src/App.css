@@ -1,0 +1,44 @@
+/* 앱 로딩 / 에러 상태 화면 */
+.app-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  padding: 40px 24px;
+  color: var(--on-surface-variant);
+}
+.app-status__icon {
+  font-size: 48px;
+  color: var(--primary);
+}
+.app-status__hint {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  opacity: 0.7;
+}
+.spin {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 페이지 공통: 상단바(64px) 아래, 하단 네비(약 80px) 위 여백 */
+.page {
+  padding: 72px 12px 92px;
+  animation: fade-in 0.3s ease;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

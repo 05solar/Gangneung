@@ -1,0 +1,124 @@
+.mine__scores {
+  display: flex;
+  gap: 18px;
+  align-items: baseline;
+  margin-bottom: 8px;
+  padding-left: 2px;
+}
+.mine__score {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+.mine__score-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--on-surface-variant);
+}
+.mine__score-value {
+  font-family: var(--font-headline);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--primary);
+}
+.mine__desc {
+  text-align: center;
+  font-size: 13px;
+  color: var(--on-surface-variant);
+  margin-bottom: 12px;
+}
+
+.mine__stage {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 340px;
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-xl);
+  background: radial-gradient(circle at 50% 70%, #eaf0f8, #d7e3f5);
+  overflow: hidden;
+  user-select: none;
+  touch-action: manipulation;
+}
+.mine__stage:active {
+  background: radial-gradient(circle at 50% 70%, #e3ebf6, #cdddf2);
+}
+
+.mine__rock {
+  position: absolute;
+  left: 50%;
+  bottom: 24px;
+  width: 280px;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 8px 14px rgba(65, 94, 146, 0.28));
+}
+.mine__rock.shake {
+  animation: rockShake 0.26s ease;
+}
+@keyframes rockShake {
+  0% { transform: translateX(-50%) rotate(0); }
+  25% { transform: translateX(-52%) rotate(-2deg); }
+  55% { transform: translateX(-48%) rotate(2deg); }
+  100% { transform: translateX(-50%) rotate(0); }
+}
+
+.mine__pick {
+  position: absolute;
+  right: 24px;
+  top: 22px;
+  width: 150px;
+  transform-origin: bottom left;
+  transform: rotate(-8deg);
+  pointer-events: none;
+  filter: drop-shadow(0 3px 5px rgba(65, 94, 146, 0.2));
+}
+.mine__pick.swing {
+  animation: pickSwing 0.26s ease;
+}
+@keyframes pickSwing {
+  0% { transform: rotate(-46deg) translateY(-10px); }
+  55% { transform: rotate(14deg) translateY(6px); }
+  100% { transform: rotate(-8deg) translateY(0); }
+}
+
+.mine__tap {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--on-surface-variant);
+  opacity: 0.7;
+}
+
+.mine__actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+.mine__btn {
+  flex: 1;
+  padding: 13px;
+  border-radius: var(--radius-lg);
+  border: none;
+  background: var(--surface-container);
+  color: var(--on-surface);
+  font-weight: 700;
+  font-size: 15px;
+}
+.mine__btn--primary {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+.mine__btn:disabled {
+  opacity: 0.45;
+}
+.mine__saved {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--tertiary);
+}

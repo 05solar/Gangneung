@@ -1,0 +1,222 @@
+.bj-help {
+  margin-bottom: 12px;
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface-container-lowest);
+}
+.bj-help__toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  background: var(--surface-container-low);
+  border: none;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--on-surface);
+}
+.bj-help__toggle .material-symbols-outlined {
+  font-size: 18px;
+  color: var(--primary);
+}
+.bj-help__toggle .material-symbols-outlined:last-child {
+  margin-left: auto;
+}
+.bj-help__body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--on-surface-variant);
+  border-top: 1px solid var(--outline-variant);
+}
+
+.bj-wallet {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 0 2px;
+  margin-bottom: 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--on-surface-variant);
+}
+.bj-wallet b {
+  font-family: var(--font-headline);
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.bj-area {
+  margin-bottom: 12px;
+}
+.bj-area__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--on-surface-variant);
+  margin-bottom: 6px;
+  text-align: center;
+}
+.bj-hand {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  min-height: 84px;
+  flex-wrap: wrap;
+  perspective: 700px;
+}
+
+.bj-card {
+  width: 58px;
+  height: 82px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #d5d5d5;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #1a1a1a;
+}
+/* 카드가 새로 나올 때(딜/히트) 왼쪽에서 플립하며 나타나는 애니메이션 */
+.bj-hand .bj-card:not(.bj-card--empty) {
+  animation: bjFlipIn 0.34s cubic-bezier(0.2, 0.8, 0.3, 1);
+  transform-origin: left center;
+  backface-visibility: hidden;
+}
+@keyframes bjFlipIn {
+  0% {
+    transform: translateX(-46px) rotateY(-95deg);
+    opacity: 0;
+    box-shadow: 12px 6px 18px rgba(0, 0, 0, 0.25);
+  }
+  55% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0) rotateY(0deg);
+    opacity: 1;
+  }
+}
+.bj-card--red {
+  color: #d11e2a;
+}
+.bj-card__rank {
+  font-family: var(--font-headline);
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1;
+}
+.bj-card__suit {
+  font-size: 20px;
+  line-height: 1.1;
+}
+.bj-card--back {
+  background: repeating-linear-gradient(45deg, #415e92, #415e92 6px, #34507f 6px, #34507f 12px);
+  border-color: #2c456f;
+}
+.bj-card--empty {
+  background: transparent;
+  border: 1px dashed var(--outline-variant);
+  box-shadow: none;
+}
+
+.bj-message {
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: var(--radius-lg);
+  background: var(--surface-container-high);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--on-surface);
+}
+
+.bj-controls {
+  margin-top: 4px;
+}
+.bj-controls--row {
+  display: flex;
+  gap: 10px;
+}
+/* 베팅 단계: 베팅 칩 + 시작 버튼 세로로 중앙정렬 */
+.bj-controls:not(.bj-controls--row) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.bj-bet {
+  align-self: stretch;
+}
+.bj-bet__label {
+  display: block;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--on-surface-variant);
+}
+.bj-bet__chips {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+/* 시작 버튼: 세로 플렉스에서 늘어나지 않고 가운데에 */
+.bj-controls:not(.bj-controls--row) .bj-btn {
+  flex: none;
+  min-width: 60%;
+}
+.bj-chip {
+  min-width: 52px;
+  padding: 10px 4px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--outline-variant);
+  background: var(--surface-container-lowest);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--on-surface);
+}
+.bj-chip.on {
+  background: var(--primary);
+  color: var(--on-primary);
+  border-color: var(--outline);
+}
+.bj-chip:disabled {
+  opacity: 0.35;
+}
+
+.bj-btn {
+  flex: 1;
+  padding: 13px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--outline-variant);
+  background: var(--surface-container-low);
+  color: var(--on-surface);
+  font-weight: 700;
+  font-size: 15px;
+}
+.bj-btn--primary {
+  background: var(--primary);
+  color: var(--on-primary);
+  border-color: var(--outline);
+}
+.bj-btn:disabled {
+  opacity: 0.4;
+}
+.bj-warn {
+  text-align: center;
+  font-size: 13px;
+  color: var(--secondary);
+  padding: 8px;
+}

@@ -1,0 +1,219 @@
+.gamehome__head {
+  margin-bottom: 20px;
+}
+.gamehome__title {
+  font-family: var(--font-headline);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--primary);
+}
+.gamehome__desc {
+  font-size: 13px;
+  color: var(--on-surface-variant);
+  margin-top: 4px;
+}
+
+.gamehome__section {
+  margin-bottom: 24px;
+}
+.gamehome__steplabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--on-surface-variant);
+  margin-bottom: 10px;
+}
+
+/* 플레이어 그리드 (컴팩트) */
+.player-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.player-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 8px 4px;
+  background: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  transition: all 0.12s ease;
+}
+.player-card--on {
+  border-color: var(--primary);
+  background: var(--surface-container-low);
+  box-shadow: 0 0 0 2px var(--primary-fixed);
+}
+.player-card:active {
+  transform: scale(0.97);
+}
+.player-card__avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+.player-card__avatar.sm {
+  width: 30px;
+  height: 30px;
+  font-size: 11px;
+}
+.player-card__name {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--on-surface);
+}
+.player-card__best {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--on-surface-variant);
+}
+
+/* STEP 2 */
+.gamehome__hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 16px;
+  border: 1px dashed var(--outline-variant);
+  border-radius: var(--radius-lg);
+  color: var(--on-surface-variant);
+  font-size: 13px;
+}
+.gamehome__hint .material-symbols-outlined {
+  font-size: 18px;
+}
+.gamehome__selected {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: var(--on-surface-variant);
+}
+
+.game-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.game-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  text-align: left;
+  background: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  transition: all 0.12s ease;
+}
+.game-item:active {
+  transform: scale(0.99);
+}
+.game-item--off {
+  opacity: 0.5;
+}
+.game-item__art {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: var(--radius);
+  border: 1px solid var(--outline-variant);
+}
+.game-item__text {
+  flex: 1;
+  min-width: 0;
+}
+.game-item__name {
+  display: block;
+  font-family: var(--font-headline);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--on-surface);
+}
+.game-item__desc {
+  display: block;
+  font-size: 12px;
+  color: var(--on-surface-variant);
+  margin-top: 2px;
+}
+.game-item__go {
+  color: var(--on-surface-variant);
+}
+
+/* 랭킹 */
+.rank-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.rank-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+}
+.rank-row--me {
+  border-color: var(--primary);
+  background: var(--surface-container-low);
+}
+.rank-no {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 12px;
+  background: var(--surface-container-high);
+  color: var(--on-surface-variant);
+}
+.rank-no--1 {
+  background: #f2c94c;
+  color: #5c4a00;
+}
+.rank-no--2 {
+  background: #cfd6e0;
+  color: #3a4250;
+}
+.rank-no--3 {
+  background: #e0a878;
+  color: #5a3512;
+}
+.rank-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--on-surface);
+}
+.rank-score {
+  font-family: var(--font-headline);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--primary);
+}
+.rank-score-unit {
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 1px;
+  color: var(--on-surface-variant);
+}
