@@ -70,7 +70,6 @@ const days = [
         durationMin: 28,
         image: img('hotel,room', 17),
         highlight: true,
-        confirmation: '얼리 체크인 · 짐만 두고 바로 이동',
       },
       {
         time: '16:20',
