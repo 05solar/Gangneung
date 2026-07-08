@@ -38,6 +38,7 @@ export interface ItineraryEvent {
   tags: string[];
   transport: '택시' | '도보';
   durationMin: number | null; // 직전 일정에서 이곳까지 이동 소요시간(분)
+  cost?: number; // 직전 일정에서 이곳까지 이동 비용(원, 예: 택시비)
   image: string; // 일정 대표 이미지 URL
   highlight?: boolean;
   mustSee?: boolean;

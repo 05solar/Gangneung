@@ -71,6 +71,7 @@ export default function DaySchedule({ dayId }: { dayId: number }) {
       period: periodOf(e.time),
       durationMin:
         e.durationMin == null || Number.isNaN(Number(e.durationMin)) ? null : Number(e.durationMin),
+      cost: e.cost == null || Number.isNaN(Number(e.cost)) || Number(e.cost) <= 0 ? undefined : Number(e.cost),
       tags: e.tags.filter((t) => t.trim() !== ''),
       icon: e.icon || 'place',
     }));
@@ -169,6 +170,19 @@ export default function DaySchedule({ dayId }: { dayId: number }) {
                   placeholder="-"
                   onChange={(ev) =>
                     patch(i, 'durationMin', ev.target.value === '' ? null : Number(ev.target.value))
+                  }
+                />
+              </label>
+              <label className="ef">
+                <span>비용(원)</span>
+                <input
+                  type="number"
+                  min={0}
+                  inputMode="numeric"
+                  value={e.cost ?? ''}
+                  placeholder="-"
+                  onChange={(ev) =>
+                    patch(i, 'cost', ev.target.value === '' ? undefined : Number(ev.target.value))
                   }
                 />
               </label>

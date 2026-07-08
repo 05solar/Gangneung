@@ -20,6 +20,7 @@ export default function ItineraryList({ events }: Props) {
               to={event.mapQuery}
               transport={event.transport}
               durationMin={event.durationMin}
+              cost={event.cost}
             />
           )}
           <EventCard event={event} />
