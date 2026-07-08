@@ -48,6 +48,8 @@
   color: var(--primary);
 }
 .evt-title {
+  flex: 0 1 auto;
+  min-width: 0;
   font-family: var(--font-headline);
   font-size: 14px;
   font-weight: 700;
@@ -56,6 +58,20 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.evt-stay {
+  flex-shrink: 0;
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--secondary);
+}
+.evt-stay .material-symbols-outlined {
+  font-size: 13px;
 }
 
 .evt__line2 {

@@ -72,6 +72,10 @@ export default function DaySchedule({ dayId }: { dayId: number }) {
       durationMin:
         e.durationMin == null || Number.isNaN(Number(e.durationMin)) ? null : Number(e.durationMin),
       cost: e.cost == null || Number.isNaN(Number(e.cost)) || Number(e.cost) <= 0 ? undefined : Number(e.cost),
+      stayMin:
+        e.stayMin == null || Number.isNaN(Number(e.stayMin)) || Number(e.stayMin) <= 0
+          ? undefined
+          : Number(e.stayMin),
       tags: e.tags.filter((t) => t.trim() !== ''),
       icon: e.icon || 'place',
     }));
@@ -161,7 +165,7 @@ export default function DaySchedule({ dayId }: { dayId: number }) {
                 </select>
               </label>
               <label className="ef">
-                <span>소요(분)</span>
+                <span>이동(분)</span>
                 <input
                   type="number"
                   min={0}
@@ -174,7 +178,7 @@ export default function DaySchedule({ dayId }: { dayId: number }) {
                 />
               </label>
               <label className="ef">
-                <span>비용(원)</span>
+                <span>택시비(원)</span>
                 <input
                   type="number"
                   min={0}
@@ -183,6 +187,19 @@ export default function DaySchedule({ dayId }: { dayId: number }) {
                   placeholder="-"
                   onChange={(ev) =>
                     patch(i, 'cost', ev.target.value === '' ? undefined : Number(ev.target.value))
+                  }
+                />
+              </label>
+              <label className="ef">
+                <span>머무름(분)</span>
+                <input
+                  type="number"
+                  min={0}
+                  inputMode="numeric"
+                  value={e.stayMin ?? ''}
+                  placeholder="-"
+                  onChange={(ev) =>
+                    patch(i, 'stayMin', ev.target.value === '' ? undefined : Number(ev.target.value))
                   }
                 />
               </label>
