@@ -8,13 +8,14 @@
  * 이동  : 기본 택시 · 15분 이내 가까운 거리는 도보
  *
  * icon        : Material Symbols 아이콘 이름 (이모지 대신 사용)
- * image       : 일정별 대표 이미지 (키워드 기반 이미지 서비스)
+ * image       : 일정별 대표 이미지 (frontend/public/img 에 저장된 로컬 파일)
  * mapQuery    : 카카오맵 길찾기용 장소 검색어
  * durationMin : 직전 일정에서 이곳까지의 이동 소요시간(분).
  * cost        : 직전 일정에서 이곳까지의 이동 비용(원, 예: 택시비). 없으면 생략.
  */
 
-const img = (keyword, lock) => `https://loremflickr.com/320/320/${keyword}?lock=${lock}`;
+// 로컬 이미지 경로 헬퍼 (프론트가 /img/ 아래에서 정적 서빙)
+const img = (file) => `/img/${file}.jpg`;
 
 const trip = {
   title: '강릉 여행',
@@ -55,7 +56,7 @@ const days = [
         tags: ['집결', '도착'],
         transport: '택시',
         durationMin: null,
-        image: img('bus,terminal', 11),
+        image: img('d1-1-terminal'),
         highlight: false,
       },
       {
@@ -70,7 +71,7 @@ const days = [
         transport: '택시',
         durationMin: 30,
         cost: 20000,
-        image: img('hotel,luggage', 17),
+        image: img('d1-2-hotel'),
         highlight: false,
       },
       {
@@ -85,7 +86,7 @@ const days = [
         transport: '택시',
         durationMin: 30,
         cost: 18000,
-        image: img('potato,street', 12),
+        image: img('d1-3-street'),
         highlight: true,
       },
       {
@@ -99,7 +100,7 @@ const days = [
         tags: ['저녁', '오징어순대', '도보'],
         transport: '도보',
         durationMin: 20,
-        image: img('market,food', 13),
+        image: img('d1-4-market'),
         highlight: true,
       },
       {
@@ -113,7 +114,7 @@ const days = [
         tags: ['구경', '시장'],
         transport: '도보',
         durationMin: null,
-        image: img('market,night', 14),
+        image: img('d1-5-night'),
         highlight: false,
       },
       {
@@ -127,7 +128,7 @@ const days = [
         transport: '택시',
         durationMin: 30,
         cost: 20000,
-        image: img('nightsea,beach', 15),
+        image: img('d1-6-nightsea'),
         highlight: false,
       },
     ],
@@ -153,7 +154,7 @@ const days = [
         tags: ['기상', '숙소'],
         transport: '택시',
         durationMin: null,
-        image: img('morning,room', 21),
+        image: img('d2-1-morning'),
         highlight: false,
       },
       {
@@ -168,7 +169,7 @@ const days = [
         transport: '택시',
         durationMin: 30,
         cost: 15000,
-        image: img('tofu,korean', 22),
+        image: img('d2-2-tofu'),
         highlight: false,
       },
       {
@@ -182,7 +183,7 @@ const days = [
         tags: ['액티비티', '바다', '29,000원'],
         transport: '택시',
         durationMin: 20,
-        image: img('zipline,adventure', 23),
+        image: img('d2-3-zipline'),
         highlight: true,
       },
       {
@@ -196,7 +197,7 @@ const days = [
         tags: ['카페', '디저트'],
         transport: '택시',
         durationMin: 10,
-        image: img('coffee,cafe', 24),
+        image: img('d2-4-coffee'),
         highlight: true,
       },
       {
@@ -210,7 +211,7 @@ const days = [
         tags: ['해변', '물놀이'],
         transport: '택시',
         durationMin: 30,
-        image: img('beach,sea', 25),
+        image: img('d2-5-beach'),
         highlight: false,
       },
       {
@@ -224,7 +225,7 @@ const days = [
         tags: ['숙소', '휴식'],
         transport: '택시',
         durationMin: null,
-        image: img('hotel,rest', 26),
+        image: img('d2-6-rest'),
         highlight: false,
       },
       {
@@ -238,7 +239,7 @@ const days = [
         tags: ['저녁', '회', '해산물'],
         transport: '도보',
         durationMin: null,
-        image: img('sashimi,seafood', 27),
+        image: img('d2-7-sashimi'),
         highlight: false,
       },
       {
@@ -251,7 +252,7 @@ const days = [
         tags: ['술', '숙소'],
         transport: '도보',
         durationMin: null,
-        image: img('drink,night', 28),
+        image: img('d2-8-drink'),
         highlight: false,
       },
     ],
@@ -278,7 +279,7 @@ const days = [
         tags: ['산책', '도보'],
         transport: '도보',
         durationMin: null,
-        image: img('coast,walk', 31),
+        image: img('d3-1-coast'),
         highlight: false,
       },
       {
@@ -292,7 +293,7 @@ const days = [
         tags: ['쇼핑', '기념품'],
         transport: '도보',
         durationMin: 17,
-        image: img('fish,market', 32),
+        image: img('d3-2-fishmarket'),
         highlight: false,
       },
       {
@@ -306,7 +307,7 @@ const days = [
         tags: ['브런치', '카페'],
         transport: '택시',
         durationMin: 30,
-        image: img('brunch,cafe', 33),
+        image: img('d3-3-brunch'),
         highlight: false,
       },
       {
@@ -319,7 +320,7 @@ const days = [
         tags: ['해산'],
         transport: '택시',
         durationMin: 5,
-        image: img('bus,station', 34),
+        image: img('d3-4-bus'),
         highlight: true,
       },
     ],

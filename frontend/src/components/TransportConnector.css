@@ -2,14 +2,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
-  padding: 1px 0;
+  gap: 3px;
+  padding: 2px 0;
 }
 
 .connector__line {
   width: 2px;
-  height: 5px;
-  background: var(--outline-variant);
+  height: 8px;
+  background: linear-gradient(var(--outline-variant), rgba(196, 198, 208, 0.35));
   border-radius: 2px;
 }
 
@@ -17,15 +17,19 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 2px 10px 2px 3px;
+  padding: 3px 11px 3px 3px;
   border-radius: var(--radius-full);
   border: 1px solid var(--outline-variant);
-  background: var(--surface-container-low);
-  box-shadow: 0 1px 4px rgba(65, 94, 146, 0.08);
-  transition: transform 0.1s ease;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  box-shadow: var(--shadow-1);
+  transition: transform 0.12s ease, box-shadow 0.2s ease;
 }
 .connector__pill:active {
-  transform: scale(0.96);
+  transform: scale(0.95);
+}
+.connector__pill:hover {
+  box-shadow: var(--shadow-2);
 }
 
 .connector__bubble {

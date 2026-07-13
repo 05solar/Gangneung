@@ -1,37 +1,65 @@
+/* 세그먼트형 Day 탭 — 글래스 트랙 + 미끄러지는 인디케이터 */
 .daytabs {
-  display: flex;
-  gap: 4px;
-  margin-bottom: -1px;
   position: relative;
-  z-index: 10;
-  padding: 0 8px;
+  display: flex;
+  gap: 0;
+  padding: 4px;
+  border-radius: var(--radius-full);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 2px rgba(21, 51, 145, 0.06), var(--shadow-1);
+}
+
+/* 활성 탭 위치로 스르륵 이동하는 인디케이터 */
+.daytabs__indicator {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  bottom: 4px;
+  width: calc((100% - 8px) / 3);
+  border-radius: var(--radius-full);
+  background: var(--grad-primary);
+  box-shadow: var(--shadow-primary);
+  transition: transform 0.42s cubic-bezier(0.34, 1.4, 0.44, 1);
+  z-index: 0;
 }
 
 .daytabs__tab {
+  position: relative;
+  z-index: 1;
+  flex: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 4px;
-  padding: 8px 16px;
-  background: var(--surface-container);
-  border: 1px solid var(--outline-variant);
-  border-bottom: 1px solid var(--outline-variant);
-  border-top-left-radius: var(--radius-lg);
-  border-top-right-radius: var(--radius-lg);
+  padding: 10px 8px;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-full);
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.03em;
   color: var(--on-surface-variant);
-  transition: color 0.15s ease;
+  transition: color 0.3s ease;
 }
-
 .daytabs__tab--active {
-  background: var(--surface-container-lowest);
-  color: var(--primary);
-  border-bottom-color: transparent;
-  z-index: 10;
+  color: var(--on-primary);
 }
 
 .daytabs__pin {
   font-size: 14px;
+  animation: pin-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes pin-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.4) translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }

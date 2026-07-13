@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { fetchItinerary } from './lib/api';
 import { ItineraryContext } from './lib/ItineraryContext';
 import { GameProvider } from './lib/GameContext';
 import type { Itinerary } from './types';
 import TopAppBar from './components/TopAppBar';
+import DayTabs from './components/DayTabs';
 import BottomNav from './components/BottomNav';
 import Day1Page from './pages/Day1Page';
 import Day2Page from './pages/Day2Page';
@@ -28,6 +29,19 @@ export default function App() {
       .then(setData)
       .catch((err) => setError(err.message));
   }, []);
+
+  // 현재 Day(1/2/3)와 방향 계산 — 탭 인디케이터/페이지 슬라이드 애니메이션에 사용
+  const location = useLocation();
+  const dayMatch = location.pathname.match(/^\/day\/(\d)/);
+  const day = dayMatch ? Number(dayMatch[1]) : 0;
+  const prevDay = useRef(0);
+  let dir: 'none' | 'forward' | 'back' = 'none';
+  if (day && prevDay.current && day !== prevDay.current) {
+    dir = day > prevDay.current ? 'forward' : 'back';
+  }
+  useEffect(() => {
+    if (day) prevDay.current = day;
+  }, [day]);
 
   if (error) {
     return (
@@ -53,21 +67,28 @@ export default function App() {
       <GameProvider>
         <div className="app-shell">
           <TopAppBar title={data.trip.title} />
-          <Routes>
-            <Route path="/" element={<Navigate to="/day/1" replace />} />
-            <Route path="/day/1" element={<Day1Page />} />
-            <Route path="/day/2" element={<Day2Page />} />
-            <Route path="/day/3" element={<Day3Page />} />
-            <Route path="/game" element={<GameHome />} />
-            <Route path="/game/mine" element={<MineGame />} />
-            <Route path="/game/watermelon" element={<WatermelonGame />} />
-            <Route path="/game/2048" element={<Game2048 />} />
-            <Route path="/game/wordle" element={<WordleGame />} />
-            <Route path="/game/blackjack" element={<BlackjackGame />} />
-            <Route path="/game/omok" element={<OmokGame />} />
-            <Route path="/game/baduk" element={<GoGame />} />
-            <Route path="*" element={<Navigate to="/day/1" replace />} />
-          </Routes>
+          {day > 0 && (
+            <div className="dayhead">
+              <DayTabs active={day} />
+            </div>
+          )}
+          <div className={'route-slide route-slide--' + dir} key={location.pathname}>
+            <Routes location={location}>
+              <Route path="/" element={<Navigate to="/day/1" replace />} />
+              <Route path="/day/1" element={<Day1Page />} />
+              <Route path="/day/2" element={<Day2Page />} />
+              <Route path="/day/3" element={<Day3Page />} />
+              <Route path="/game" element={<GameHome />} />
+              <Route path="/game/mine" element={<MineGame />} />
+              <Route path="/game/watermelon" element={<WatermelonGame />} />
+              <Route path="/game/2048" element={<Game2048 />} />
+              <Route path="/game/wordle" element={<WordleGame />} />
+              <Route path="/game/blackjack" element={<BlackjackGame />} />
+              <Route path="/game/omok" element={<OmokGame />} />
+              <Route path="/game/baduk" element={<GoGame />} />
+              <Route path="*" element={<Navigate to="/day/1" replace />} />
+            </Routes>
+          </div>
           <BottomNav />
         </div>
       </GameProvider>

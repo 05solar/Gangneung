@@ -60,43 +60,50 @@
 }
 
 :root {
-  /* --- Colors (Digital Pastels / Soft-Retro) --- */
-  --surface: #f8f9ff;
-  --surface-dim: #cbdbf5;
+  /* --- Colors (Electric Blue · 화이트 오버레이 · 글래스) --- */
+  /* 강조색은 #1B4EF5 계열의 쨍한 블루, 표면은 흰색에 가까운 쿨톤으로 가독성 확보 */
+  --surface: #f5f8ff;
+  --surface-dim: #c3d4ff;
   --surface-container-lowest: #ffffff;
-  --surface-container-low: #eff4ff;
-  --surface-container: #e5eeff;
-  --surface-container-high: #dce9ff;
-  --surface-container-highest: #d3e4fe;
-  --surface-variant: #d3e4fe;
+  --surface-container-low: #eef3ff;
+  --surface-container: #e4ecff;
+  --surface-container-high: #d8e4ff;
+  --surface-container-highest: #ccdaff;
+  --surface-variant: #d8e4ff;
 
-  --on-surface: #0b1c30;
-  --on-surface-variant: #43474f;
+  --on-surface: #0a1633;
+  --on-surface-variant: #4a5878;
 
-  --primary: #415e92;
+  --primary: #1b4ef5;
   --on-primary: #ffffff;
-  --primary-container: #8ba8e0;
-  --on-primary-container: #1c3c6d;
-  --primary-fixed: #d7e3ff;
-  --primary-fixed-dim: #abc7ff;
+  --primary-container: #b9caff;
+  --on-primary-container: #061a6e;
+  --primary-fixed: #dde5ff;
+  --primary-fixed-dim: #aec3ff;
 
-  --secondary: #78536d;
+  --secondary: #6a3fd6;
   --on-secondary: #ffffff;
-  --secondary-container: #fdcceb;
-  --on-secondary-container: #79536d;
-  --secondary-fixed: #ffd7ef;
-  --on-secondary-fixed-variant: #5f3b54;
+  --secondary-container: #e7ddff;
+  --on-secondary-container: #34186f;
+  --secondary-fixed: #ebe3ff;
+  --on-secondary-fixed-variant: #4e2ca6;
 
-  --tertiary: #3d665d;
-  --tertiary-fixed: #bfece0;
+  --tertiary: #0e7c86;
+  --tertiary-fixed: #b6ecf1;
   --on-tertiary-fixed: #00201a;
-  --on-tertiary-fixed-variant: #254e45;
+  --on-tertiary-fixed-variant: #045159;
 
-  --outline: #747780;
-  --outline-variant: #c4c6d0;
+  --outline: #8a9bc4;
+  --outline-variant: #ccd8f4;
 
-  --background: #f8f9ff;
-  --on-background: #0b1c30;
+  --background: #eef3ff;
+  --on-background: #0a1633;
+
+  /* --- Glassmorphism 토큰 --- */
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-bg-strong: rgba(255, 255, 255, 0.78);
+  --glass-border: rgba(255, 255, 255, 0.7);
+  --glass-blur: saturate(180%) blur(16px);
 
   /* --- Fonts (Pretendard 통일) --- */
   --font-headline: 'Pretendard', sans-serif;
@@ -114,6 +121,16 @@
   /* --- Spacing (8px scale) --- */
   --gap: 16px;
   --gutter: 24px;
+
+  /* --- Elevation (일렉트릭 블루 그림자 시스템) --- */
+  --shadow-1: 0 1px 2px rgba(21, 51, 145, 0.07), 0 1px 3px rgba(21, 51, 145, 0.06);
+  --shadow-2: 0 2px 8px rgba(21, 51, 145, 0.09), 0 6px 16px rgba(21, 51, 145, 0.07);
+  --shadow-3: 0 8px 20px rgba(21, 51, 145, 0.13), 0 16px 34px rgba(21, 51, 145, 0.1);
+  --shadow-primary: 0 8px 22px rgba(27, 78, 245, 0.36);
+
+  /* --- Accent gradients --- */
+  --grad-primary: linear-gradient(135deg, #4c7dff 0%, #1b4ef5 100%);
+  --grad-sky: linear-gradient(135deg, #5b8bff 0%, #2e5bff 100%);
 }
 
 * {
@@ -162,7 +179,7 @@ button {
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
-/* Y2K 공통 질감 유틸 */
+/* 공통 질감 유틸 */
 .y2k-gloss {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 100%);
 }
@@ -171,12 +188,32 @@ button {
   background-size: 6px 6px;
   opacity: 0.05;
 }
+/* 글래스모피즘 유틸 (반투명 화이트 + 블러) */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+}
 
-/* 모바일 컨테이너: 앱을 가운데 정렬된 폰 프레임처럼 보여줍니다. */
+/* 바깥 여백(데스크탑에서 폰 프레임 양옆) 은은한 블루 배경 */
+body {
+  background:
+    radial-gradient(1200px 620px at 50% -10%, #cfdbff 0%, rgba(207, 219, 255, 0) 62%),
+    var(--background);
+}
+
+/* 모바일 컨테이너: 앱을 가운데 정렬된 폰 프레임처럼 보여줍니다.
+   쨍한 블루를 화이트 오버레이로 눌러 가독성을 지킨 배경 */
 .app-shell {
   max-width: 448px;
   margin: 0 auto;
   min-height: 100dvh;
   position: relative;
-  background: var(--background);
+  overflow-x: clip; /* 페이지 슬라이드 시 가로 스크롤 방지 */
+  background:
+    radial-gradient(760px 460px at 12% -4%, rgba(27, 78, 245, 0.16) 0%, rgba(27, 78, 245, 0) 52%),
+    radial-gradient(680px 460px at 100% 6%, rgba(106, 63, 214, 0.12) 0%, rgba(106, 63, 214, 0) 50%),
+    radial-gradient(900px 700px at 50% 108%, rgba(46, 91, 255, 0.1) 0%, rgba(46, 91, 255, 0) 55%),
+    var(--background);
 }

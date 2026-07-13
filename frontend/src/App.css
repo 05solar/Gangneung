@@ -29,8 +29,27 @@
 
 /* 페이지 공통: 상단바(64px) 아래, 하단 네비(약 80px) 위 여백 */
 .page {
-  padding: 72px 12px 92px;
+  padding: 72px 12px 96px;
+}
+/* Day 페이지: 상단 탭(dayhead)이 상단바 여백을 대신 확보하므로 top 여백 축소 */
+.page--sub {
+  padding-top: 6px;
+}
+
+/* Day 탭 헤더 — 상단바 아래에 고정 느낌으로 배치 (탭은 상시 마운트되어 인디케이터가 이동) */
+.dayhead {
+  padding: 74px 12px 8px;
+}
+
+/* 라우트 전환 애니메이션 래퍼 */
+.route-slide {
   animation: fade-in 0.3s ease;
+}
+.route-slide--forward {
+  animation: slide-from-right 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.route-slide--back {
+  animation: slide-from-left 0.34s cubic-bezier(0.22, 1, 0.36, 1);
 }
 @keyframes fade-in {
   from {
@@ -40,5 +59,25 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@keyframes slide-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(46px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slide-from-left {
+  from {
+    opacity: 0;
+    transform: translateX(-46px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

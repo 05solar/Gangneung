@@ -9,7 +9,7 @@ export default function TopAppBar({ title }: Props) {
   return (
     <header className="topbar">
       <div className="topbar__brand">
-        <span className="material-symbols-outlined topbar__logo">explore</span>
+        <img className="topbar__logo" src="/logo.svg" alt="강릉 여행" width={34} height={34} />
         <h1 className="topbar__title">{title}</h1>
       </div>
     </header>

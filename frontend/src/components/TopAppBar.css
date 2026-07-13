@@ -11,20 +11,25 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
-  background: var(--surface-container);
-  border-bottom: 1px solid var(--outline-variant);
-  box-shadow: 0 2px 8px rgba(65, 94, 146, 0.06);
+  background: rgba(248, 249, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid rgba(196, 198, 208, 0.5);
+  box-shadow: 0 2px 12px rgba(28, 60, 109, 0.05);
 }
 
 .topbar__brand {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .topbar__logo {
-  color: var(--primary);
-  font-size: 28px;
+  display: block;
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  box-shadow: var(--shadow-primary);
 }
 
 .topbar__title {

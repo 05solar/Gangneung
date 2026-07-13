@@ -1,10 +1,12 @@
 .itinlist {
-  border: 1px solid var(--outline-variant);
-  background: var(--surface-container-lowest);
-  padding: 10px;
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.58) 0%, rgba(224, 233, 255, 0.42) 100%);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  padding: 12px 10px;
   display: flex;
   flex-direction: column;
   gap: 2px;
-  border-radius: 0 var(--radius-2xl) var(--radius-2xl) var(--radius-2xl);
-  box-shadow: 0 4px 14px rgba(65, 94, 146, 0.06);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-2);
 }
